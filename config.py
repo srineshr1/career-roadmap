@@ -35,6 +35,6 @@ def initialize_session_state():
         )
 
 # App configuration constants
-APP_TITLE = "Llama 4 Career Scout"
+APP_TITLE = "Career Roadmap Scout"
 APP_ICON = "🚀"
 MAX_QUESTIONS = 10

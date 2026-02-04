@@ -310,34 +310,60 @@ async function showRoadmapGeneration() {
 function displayRoadmap(roadmap) {
     const questionContainer = document.getElementById('questionContainer');
 
+    // Debug logging
+    console.log('Received roadmap:', roadmap);
+    console.log('Roadmap type:', typeof roadmap);
+    console.log('Steps:', roadmap.steps);
+    console.log('Skills:', roadmap.skills_to_learn);
+    console.log('Projects:', roadmap.recommended_projects);
+
+    // Build steps HTML
     let stepsHTML = '';
-    if (roadmap.steps && Array.isArray(roadmap.steps)) {
-        stepsHTML = roadmap.steps.map((step, index) => `
-            <div class="roadmap-step">
-                <div class="step-number">${index + 1}</div>
-                <div class="step-content">
-                    <h3>${step.title || step}</h3>
-                    <p>${step.description || ''}</p>
+    if (roadmap.steps && Array.isArray(roadmap.steps) && roadmap.steps.length > 0) {
+        stepsHTML = roadmap.steps.map((step, index) => {
+            // Handle both object and string formats
+            const title = typeof step === 'object' ? (step.title || `Step ${index + 1}`) : step;
+            const description = typeof step === 'object' ? (step.description || '') : '';
+
+            return `
+                <div class="roadmap-step">
+                    <div class="step-number">${index + 1}</div>
+                    <div class="step-content">
+                        <h3>${title}</h3>
+                        ${description ? `<p>${description}</p>` : ''}
+                    </div>
                 </div>
-            </div>
-        `).join('');
+            `;
+        }).join('');
+    } else {
+        stepsHTML = '<p>No specific steps provided. Your roadmap is building!</p>';
     }
 
+    // Build skills HTML
     let skillsHTML = '';
-    if (roadmap.skills_to_learn && Array.isArray(roadmap.skills_to_learn)) {
-        skillsHTML = roadmap.skills_to_learn.map(skill => `
-            <span class="skill-tag">${skill}</span>
-        `).join('');
+    if (roadmap.skills_to_learn && Array.isArray(roadmap.skills_to_learn) && roadmap.skills_to_learn.length > 0) {
+        skillsHTML = roadmap.skills_to_learn.map(skill => {
+            // Handle both object and string formats
+            const skillName = typeof skill === 'object' ? (skill.name || skill.title || JSON.stringify(skill)) : skill;
+            return `<span class="skill-tag">${skillName}</span>`;
+        }).join('');
     }
 
+    // Build projects HTML
     let projectsHTML = '';
-    if (roadmap.recommended_projects && Array.isArray(roadmap.recommended_projects)) {
-        projectsHTML = roadmap.recommended_projects.map(project => `
-            <div class="project-card">
-                <h4>${project.title || project}</h4>
-                <p>${project.description || ''}</p>
-            </div>
-        `).join('');
+    if (roadmap.recommended_projects && Array.isArray(roadmap.recommended_projects) && roadmap.recommended_projects.length > 0) {
+        projectsHTML = roadmap.recommended_projects.map(project => {
+            // Handle both object and string formats
+            const title = typeof project === 'object' ? (project.title || project.name || 'Project') : project;
+            const description = typeof project === 'object' ? (project.description || '') : '';
+
+            return `
+                <div class="project-card">
+                    <h4>${title}</h4>
+                    ${description ? `<p>${description}</p>` : ''}
+                </div>
+            `;
+        }).join('');
     }
 
     questionContainer.innerHTML = `
@@ -350,7 +376,7 @@ function displayRoadmap(roadmap) {
             <div class="roadmap-section">
                 <h2>📚 Learning Path</h2>
                 <div class="roadmap-steps">
-                    ${stepsHTML || '<p>Your customized learning steps will appear here.</p>'}
+                    ${stepsHTML}
                 </div>
             </div>
             

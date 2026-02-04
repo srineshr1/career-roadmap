@@ -4,182 +4,436 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Orvia — Personalized Learning</title>
+  <title>Orvia — Professional Learning Platform</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="roadmap.css">
 </head>
 
 <body>
-  <!-- Background Pattern -->
-  <div class="bg-pattern"></div>
 
-  <!-- Progress Bar -->
-  <div class="progress-container">
-    <div class="progress-bar" id="progressBar"></div>
-  </div>
-
-  <!-- Logo -->
-  <header class="header">
-    <div class="logo">
-      <div class="logo-icon">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round" />
-          <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round" />
-          <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round" />
-        </svg>
+  <!-- ============================================= -->
+  <!-- ONBOARDING SCREENS -->
+  <!-- ============================================= -->
+  <div id="onboardingWrapper" class="onboarding-wrapper">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-inner">
+        <div class="logo">
+          <svg class="logo-icon" viewBox="0 0 32 32" fill="none">
+            <rect width="32" height="32" rx="8" fill="url(#grad)" />
+            <path d="M10 16L14 20L22 12" stroke="white" stroke-width="2.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+            <defs>
+              <linearGradient id="grad" x1="0" y1="0" x2="32" y2="32">
+                <stop stop-color="#2563eb" />
+                <stop offset="1" stop-color="#3b82f6" />
+              </linearGradient>
+            </defs>
+          </svg>
+          <span class="logo-text">Orvia</span>
+        </div>
+        <div class="step-label" id="stepLabel">Step 1 of 3</div>
       </div>
-      <span class="logo-text">Orvia</span>
-    </div>
-  </header>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressBar"></div>
+      </div>
+    </header>
 
-  <!-- Main Container -->
-  <main class="main-container">
-
-    <!-- Step 1: Name Input -->
-    <section class="step step-1 active" id="step1">
-      <div class="card">
-        <div class="card-content">
-          <div class="step-indicator">Step 1 of 2</div>
-          <h1 class="card-title">Let's get started</h1>
-          <p class="card-subtitle">We'll personalize your learning experience based on your goals.</p>
-
-          <div class="input-group">
-            <label for="nameInput" class="input-label">What's your name?</label>
-            <input type="text" id="nameInput" class="text-input" placeholder="Enter your name" autocomplete="off"
+    <!-- Onboarding Steps -->
+    <main class="main">
+      <!-- Step 1: Name -->
+      <section class="step active" id="step1">
+        <div class="step-content">
+          <div class="step-header">
+            <span class="step-badge">Getting Started</span>
+            <h1 class="step-title">What should we call you?</h1>
+            <p class="step-desc">We'll use this to personalize your experience.</p>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Your name</label>
+            <input type="text" id="nameInput" class="form-input" placeholder="Enter your full name" autocomplete="off"
               autofocus>
           </div>
-
-          <button class="btn-primary" id="continueBtn" disabled>
-            Continue
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" />
-            </svg>
-          </button>
         </div>
-      </div>
-    </section>
+        <div class="step-footer">
+          <div></div>
+          <button class="btn btn-primary" id="continueBtn" disabled>Continue</button>
+        </div>
+      </section>
 
-    <!-- Step 2: Career Selection -->
-    <section class="step step-2" id="step2">
-      <div class="card">
-        <div class="card-content">
-          <div class="step-indicator">Step 2 of 2</div>
-          <h1 class="card-title">Hey <span id="displayName">there</span>! 👋</h1>
-          <p class="card-subtitle">Choose your career roadmap to get started.</p>
-
-          <div class="career-options" id="careerOptions">
-            <button class="career-btn" data-career="web">
-              <div class="career-icon">
-                <svg viewBox="0 0 24 24" fill="none">
-                  <rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2" />
-                  <path d="M8 21H16M12 17V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                </svg>
-              </div>
-              <div class="career-info">
-                <span class="career-name">Web Development</span>
-                <span class="career-desc">Frontend, Backend & Full Stack</span>
-              </div>
+      <!-- Step 2: Career -->
+      <section class="step" id="step2">
+        <div class="step-content">
+          <div class="step-header">
+            <span class="step-badge">Learning Path</span>
+            <h1 class="step-title">Choose your focus area</h1>
+            <p class="step-desc">Select the career path that aligns with your goals.</p>
+          </div>
+          <div class="card-grid" id="careerOptions">
+            <button class="card" data-value="web">
+              <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="3" width="20" height="14" rx="2" />
+                  <path d="M8 21h8M12 17v4" />
+                </svg></div>
+              <div class="card-body"><span class="card-title">Web Development</span><span class="card-desc">Frontend,
+                  Backend & Full Stack</span></div>
             </button>
-
-            <button class="career-btn" data-career="mobile">
-              <div class="career-icon">
-                <svg viewBox="0 0 24 24" fill="none">
-                  <rect x="5" y="2" width="14" height="20" rx="2" stroke="currentColor" stroke-width="2" />
-                  <path d="M12 18H12.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                </svg>
-              </div>
-              <div class="career-info">
-                <span class="career-name">Mobile Development</span>
-                <span class="career-desc">iOS, Android & Cross-platform</span>
-              </div>
+            <button class="card" data-value="mobile">
+              <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="5" y="2" width="14" height="20" rx="2" />
+                  <circle cx="12" cy="18" r="1" />
+                </svg></div>
+              <div class="card-body"><span class="card-title">Mobile Development</span><span class="card-desc">iOS,
+                  Android & Cross-platform</span></div>
             </button>
-
-            <button class="career-btn" data-career="data">
-              <div class="career-icon">
-                <svg viewBox="0 0 24 24" fill="none">
-                  <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round" />
-                  <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round" />
-                  <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round" />
-                </svg>
-              </div>
-              <div class="career-info">
-                <span class="career-name">Data Science / ML</span>
-                <span class="career-desc">Analytics, AI & Machine Learning</span>
-              </div>
+            <button class="card" data-value="data">
+              <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                  <path d="M2 17l10 5 10-5" />
+                  <path d="M2 12l10 5 10-5" />
+                </svg></div>
+              <div class="card-body"><span class="card-title">Data Science & ML</span><span class="card-desc">Analytics,
+                  AI & Machine Learning</span></div>
             </button>
-
-            <button class="career-btn" data-career="devops">
-              <div class="career-icon">
-                <svg viewBox="0 0 24 24" fill="none">
+            <button class="card" data-value="devops">
+              <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="3" />
                   <path
-                    d="M12.22 2H11.78C11.2496 2 10.7409 2.21071 10.3658 2.58579C9.99072 2.96086 9.78 3.46957 9.78 4V4.18C9.77964 4.53073 9.68706 4.87519 9.51154 5.17884C9.33602 5.48248 9.08374 5.73464 8.78 5.91L8.35 6.16C8.04596 6.33554 7.70108 6.42795 7.35 6.42795C6.99893 6.42795 6.65404 6.33554 6.35 6.16L6.2 6.08C5.74107 5.81526 5.19584 5.74344 4.684 5.88C4.17217 6.01656 3.73555 6.35077 3.47 6.81L3.25 7.19C2.98526 7.64893 2.91345 8.19416 3.05 8.706C3.18656 9.21783 3.52077 9.65445 3.98 9.92L4.13 10.02C4.43228 10.1945 4.68362 10.4451 4.85905 10.7468C5.03448 11.0486 5.1279 11.3908 5.13 11.74V12.25C5.1314 12.6024 5.03965 12.949 4.86405 13.2545C4.68844 13.5601 4.43521 13.8138 4.13 13.99L3.98 14.08C3.52077 14.3455 3.18656 14.7822 3.05 15.294C2.91345 15.8058 2.98526 16.3511 3.25 16.81L3.47 17.19C3.73555 17.6492 4.17217 17.9834 4.684 18.12C5.19584 18.2566 5.74107 18.1847 6.2 17.92L6.35 17.84C6.65404 17.6645 6.99893 17.572 7.35 17.572C7.70108 17.572 8.04596 17.6645 8.35 17.84L8.78 18.09C9.08374 18.2654 9.33602 18.5175 9.51154 18.8212C9.68706 19.1248 9.77964 19.4693 9.78 19.82V20C9.78 20.5304 9.99072 21.0391 10.3658 21.4142C10.7409 21.7893 11.2496 22 11.78 22H12.22C12.7504 22 13.2591 21.7893 13.6342 21.4142C14.0093 21.0391 14.22 20.5304 14.22 20V19.82C14.2204 19.4693 14.3129 19.1248 14.4885 18.8212C14.664 18.5175 14.9163 18.2654 15.22 18.09L15.65 17.84C15.954 17.6645 16.2989 17.572 16.65 17.572C17.0011 17.572 17.346 17.6645 17.65 17.84L17.8 17.92C18.2589 18.1847 18.8042 18.2566 19.316 18.12C19.8278 17.9834 20.2645 17.6492 20.53 17.19L20.75 16.8C21.0147 16.3411 21.0866 15.7958 20.95 15.284C20.8134 14.7722 20.4792 14.3355 20.02 14.07L19.87 13.99C19.5648 13.8138 19.3116 13.5601 19.1359 13.2545C18.9603 12.949 18.8686 12.6024 18.87 12.25V11.75C18.8686 11.3976 18.9603 11.051 19.1359 10.7455C19.3116 10.4399 19.5648 10.1862 19.87 10.01L20.02 9.92C20.4792 9.65445 20.8134 9.21783 20.95 8.706C21.0866 8.19416 21.0147 7.64893 20.75 7.19L20.53 6.81C20.2645 6.35077 19.8278 6.01656 19.316 5.88C18.8042 5.74344 18.2589 5.81526 17.8 6.08L17.65 6.16C17.346 6.33554 17.0011 6.42795 16.65 6.42795C16.2989 6.42795 15.954 6.33554 15.65 6.16L15.22 5.91C14.9163 5.73464 14.664 5.48248 14.4885 5.17884C14.3129 4.87519 14.2204 4.53073 14.22 4.18V4C14.22 3.46957 14.0093 2.96086 13.6342 2.58579C13.2591 2.21071 12.7504 2 12.22 2Z"
-                    stroke="currentColor" stroke-width="2" />
-                  <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2" />
-                </svg>
-              </div>
-              <div class="career-info">
-                <span class="career-name">DevOps / Cloud</span>
-                <span class="career-desc">Infrastructure & Cloud Engineering</span>
-              </div>
+                    d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+                </svg></div>
+              <div class="card-body"><span class="card-title">DevOps & Cloud</span><span
+                  class="card-desc">Infrastructure & Cloud Engineering</span></div>
             </button>
           </div>
+        </div>
+        <div class="step-footer">
+          <button class="btn btn-ghost" id="backBtn1">Back</button>
+          <button class="btn btn-primary" id="careerBtn" disabled>Continue</button>
+        </div>
+      </section>
 
-          <button class="btn-back" id="backBtn">
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" />
-            </svg>
-            Back
-          </button>
+      <!-- Step 3: Level -->
+      <section class="step" id="step3">
+        <div class="step-content">
+          <div class="step-header">
+            <span class="step-badge">Experience Level</span>
+            <h1 class="step-title">What's your current level?</h1>
+            <p class="step-desc">This helps us tailor the content difficulty.</p>
+          </div>
+          <div class="option-list" id="levelOptions">
+            <button class="option" data-value="beginner">
+              <div class="option-radio"></div>
+              <div class="option-body"><span class="option-title">Beginner</span><span class="option-desc">New to this
+                  field, starting from fundamentals</span></div>
+            </button>
+            <button class="option" data-value="intermediate">
+              <div class="option-radio"></div>
+              <div class="option-body"><span class="option-title">Intermediate</span><span class="option-desc">Familiar
+                  with basics, ready for advanced topics</span></div>
+            </button>
+            <button class="option" data-value="advanced">
+              <div class="option-radio"></div>
+              <div class="option-body"><span class="option-title">Advanced</span><span class="option-desc">Experienced
+                  professional seeking mastery</span></div>
+            </button>
+          </div>
+        </div>
+        <div class="step-footer">
+          <button class="btn btn-ghost" id="backBtn2">Back</button>
+          <button class="btn btn-primary" id="levelBtn" disabled>Go to Dashboard</button>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; 2025 Orvia. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <!-- ============================================= -->
+  <!-- DASHBOARD -->
+  <!-- ============================================= -->
+  <div id="dashboardWrapper" class="dashboard-wrapper hidden">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <svg class="logo-icon" viewBox="0 0 32 32" fill="none">
+          <rect width="32" height="32" rx="8" fill="url(#grad2)" />
+          <path d="M10 16L14 20L22 12" stroke="white" stroke-width="2.5" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <defs>
+            <linearGradient id="grad2" x1="0" y1="0" x2="32" y2="32">
+              <stop stop-color="#2563eb" />
+              <stop offset="1" stop-color="#3b82f6" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <span class="logo-text">Orvia</span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="#" class="nav-item active" data-page="home">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+            <polyline points="9 22 9 12 15 12 15 22" />
+          </svg>
+          Home
+        </a>
+        <a href="#" class="nav-item" data-page="roadmap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+            <polyline points="14 2 14 8 20 8" />
+            <line x1="16" y1="13" x2="8" y2="13" />
+            <line x1="16" y1="17" x2="8" y2="17" />
+          </svg>
+          My Roadmap
+        </a>
+        <a href="#" class="nav-item" data-page="progress">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="20" x2="18" y2="10" />
+            <line x1="12" y1="20" x2="12" y2="4" />
+            <line x1="6" y1="20" x2="6" y2="14" />
+          </svg>
+          Progress
+        </a>
+        <a href="#" class="nav-item" data-page="settings">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3" />
+            <path
+              d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
+          </svg>
+          Settings
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="user-info">
+          <div class="user-avatar" id="userAvatar">U</div>
+          <div class="user-details">
+            <span class="user-name" id="sidebarUserName">User</span>
+            <span class="user-role" id="sidebarUserRole">Learner</span>
+          </div>
         </div>
       </div>
-    </section>
+    </aside>
 
-    <!-- Step 3: Completion (Placeholder) -->
-    <section class="step step-3" id="step3">
-      <div class="card">
-        <div class="card-content completion-content">
-          <div class="success-icon">
-            <svg viewBox="0 0 24 24" fill="none">
-              <path
-                d="M22 11.08V12C21.9988 14.1564 21.3005 16.2547 20.0093 17.9818C18.7182 19.709 16.9033 20.9725 14.8354 21.5839C12.7674 22.1953 10.5573 22.1219 8.53447 21.3746C6.51168 20.6273 4.78465 19.2461 3.61096 17.4371C2.43727 15.628 1.87979 13.4881 2.02168 11.3363C2.16356 9.18455 2.99721 7.13631 4.39828 5.49706C5.79935 3.85781 7.69279 2.71537 9.79619 2.24013C11.8996 1.7649 14.1003 1.98232 16.07 2.85999"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-              <path d="M22 4L12 14.01L9 11.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" />
-            </svg>
-          </div>
-          <h1 class="card-title">You're all set!</h1>
-          <p class="card-subtitle">Your personalized <span id="selectedCareer">learning</span> roadmap is ready.</p>
-          <div class="user-summary">
-            <div class="summary-item">
-              <span class="summary-label">Name</span>
-              <span class="summary-value" id="summaryName">—</span>
-            </div>
-            <div class="summary-item">
-              <span class="summary-label">Career Path</span>
-              <span class="summary-value" id="summaryCareer">—</span>
-            </div>
-          </div>
-          <button class="btn-primary" id="viewRoadmapBtn">
-            View My Roadmap
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" />
-            </svg>
-          </button>
+    <!-- Main Content -->
+    <div class="dashboard-main">
+      <!-- Top Bar -->
+      <header class="topbar">
+        <h1 class="page-title" id="pageTitle">Home</h1>
+        <div class="topbar-actions">
+          <button class="btn btn-primary btn-sm" id="logoutBtn">Logout</button>
         </div>
-      </div>
-    </section>
+      </header>
 
-  </main>
+      <!-- Dashboard Content -->
+      <div class="dashboard-content">
+
+        <!-- HOME PAGE -->
+        <div class="page active" id="homePage">
+          <div class="welcome-banner">
+            <h2>Welcome back, <span id="welcomeName">User</span>! 👋</h2>
+            <p>Let's continue your learning journey.</p>
+          </div>
+
+          <!-- Personalized Roadmap Section -->
+          <div class="section-card">
+            <div class="section-header">
+              <h3>🎯 Let's Get Your Personalized Roadmap</h3>
+              <p>Answer a few questions to customize your learning path.</p>
+            </div>
+
+            <!-- ============================================= -->
+            <!-- QUESTIONNAIRE CONTAINER - INTEGRATE YOUR CODE HERE -->
+            <!-- ============================================= -->
+            <div class="questionnaire-container" id="questionnaireContainer">
+
+              <!-- Question Template -->
+              <div class="question-wrapper" id="currentQuestion">
+                <p class="question-text">What is your primary goal?</p>
+
+                <!-- Answer Options (use this structure) -->
+                <div class="answer-options" id="answerOptions">
+                  <button class="answer-btn" data-answer="job">Get a job</button>
+                  <button class="answer-btn" data-answer="skills">Improve skills</button>
+                  <button class="answer-btn" data-answer="switch">Switch careers</button>
+                  <button class="answer-btn" data-answer="hobby">Personal interest</button>
+                </div>
+
+                <!-- Or use text input -->
+                <!-- <input type="text" class="form-input" id="answerInput" placeholder="Type your answer..."> -->
+              </div>
+
+              <!-- Navigation -->
+              <div class="question-nav">
+                <button class="btn btn-ghost" id="prevQuestionBtn" disabled>Previous</button>
+                <span class="question-progress">1 / 5</span>
+                <button class="btn btn-primary" id="nextQuestionBtn">Next</button>
+              </div>
+            </div>
+            <!-- END QUESTIONNAIRE CONTAINER -->
+
+          </div>
+        </div>
+
+        <!-- ROADMAP PAGE - Candy Crush Style -->
+        <div class="page" id="roadmapPage">
+          <!-- Roadmap will be rendered here by roadmap.js -->
+          <div id="roadmapContainer"></div>
+        </div>
+
+        <!-- PROGRESS PAGE -->
+        <div class="page" id="progressPage">
+          <!-- Stats Row -->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon green">✓</div>
+              <div class="stat-info">
+                <span class="stat-number" id="totalCompleted">12</span>
+                <span class="stat-label">Tasks Completed</span>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon blue">🔥</div>
+              <div class="stat-info">
+                <span class="stat-number" id="currentStreak">5</span>
+                <span class="stat-label">Day Streak</span>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon purple">⏱</div>
+              <div class="stat-info">
+                <span class="stat-number" id="hoursLearned">8.5</span>
+                <span class="stat-label">Hours Learned</span>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon yellow">🏆</div>
+              <div class="stat-info">
+                <span class="stat-number" id="badgesEarned">3</span>
+                <span class="stat-label">Badges Earned</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Progress Chart -->
+          <div class="section-card">
+            <div class="section-header">
+              <h3>Weekly Activity</h3>
+              <span class="section-badge">This Week</span>
+            </div>
+            <div class="activity-chart">
+              <div class="chart-bar" data-value="3" style="--height: 60%"><span>Mon</span></div>
+              <div class="chart-bar" data-value="5" style="--height: 100%"><span>Tue</span></div>
+              <div class="chart-bar" data-value="2" style="--height: 40%"><span>Wed</span></div>
+              <div class="chart-bar" data-value="4" style="--height: 80%"><span>Thu</span></div>
+              <div class="chart-bar today" data-value="1" style="--height: 20%"><span>Fri</span></div>
+              <div class="chart-bar" data-value="0" style="--height: 5%"><span>Sat</span></div>
+              <div class="chart-bar" data-value="0" style="--height: 5%"><span>Sun</span></div>
+            </div>
+          </div>
+
+          <!-- Two Column Layout -->
+          <div class="progress-columns">
+            <!-- Current Progress -->
+            <div class="section-card">
+              <h3>Current Progress</h3>
+              <div class="progress-item">
+                <div class="progress-label">
+                  <span>Overall Completion</span>
+                  <span class="progress-percent">45%</span>
+                </div>
+                <div class="progress-track">
+                  <div class="progress-fill" style="width: 45%"></div>
+                </div>
+              </div>
+              <div class="progress-item">
+                <div class="progress-label">
+                  <span>Section 1: Fundamentals</span>
+                  <span class="progress-percent">100%</span>
+                </div>
+                <div class="progress-track complete">
+                  <div class="progress-fill" style="width: 100%"></div>
+                </div>
+              </div>
+              <div class="progress-item">
+                <div class="progress-label">
+                  <span>Section 2: JavaScript</span>
+                  <span class="progress-percent">50%</span>
+                </div>
+                <div class="progress-track">
+                  <div class="progress-fill" style="width: 50%"></div>
+                </div>
+              </div>
+              <div class="progress-item">
+                <div class="progress-label">
+                  <span>Section 3: React</span>
+                  <span class="progress-percent">0%</span>
+                </div>
+                <div class="progress-track">
+                  <div class="progress-fill" style="width: 0%"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="section-card">
+              <h3>Recent Activity</h3>
+              <div class="activity-feed">
+                <div class="activity-item">
+                  <div class="activity-icon green">✓</div>
+                  <div class="activity-content">
+                    <span class="activity-text">Completed "DOM Manipulation"</span>
+                    <span class="activity-time">2 hours ago</span>
+                  </div>
+                </div>
+                <div class="activity-item">
+                  <div class="activity-icon blue">📖</div>
+                  <div class="activity-content">
+                    <span class="activity-text">Started "Events & Forms"</span>
+                    <span class="activity-time">3 hours ago</span>
+                  </div>
+                </div>
+                <div class="activity-item">
+                  <div class="activity-icon yellow">🏆</div>
+                  <div class="activity-content">
+                    <span class="activity-text">Earned "5 Day Streak" badge</span>
+                    <span class="activity-time">Yesterday</span>
+                  </div>
+                </div>
+                <div class="activity-item">
+                  <div class="activity-icon green">✓</div>
+                  <div class="activity-content">
+                    <span class="activity-text">Completed "JS Basics"</span>
+                    <span class="activity-time">Yesterday</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SETTINGS PAGE -->
+        <div class="page" id="settingsPage">
+          <div class="section-card">
+            <h3>⚙️ Settings</h3>
+            <p class="text-muted">Manage your account preferences.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Footer -->
+      <footer class="dashboard-footer">
+        <p>&copy; 2025 Orvia. All rights reserved.</p>
+      </footer>
+    </div>
+  </div>
 
   <script src="script.js"></script>
+  <script src="questionnaire.js"></script>
+  <script src="roadmap.js"></script>
+  <script src="progress.js"></script>
 </body>
 
 </html>

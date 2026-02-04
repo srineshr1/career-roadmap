@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orvia — Personalized Learning</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- Background Pattern -->
+  <div class="bg-pattern"></div>
+
+  <!-- Progress Bar -->
+  <div class="progress-container">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <!-- Logo -->
+  <header class="header">
+    <div class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </div>
+      <span class="logo-text">Orvia</span>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="main-container">
+
+    <!-- Step 1: Name Input -->
+    <section class="step step-1 active" id="step1">
+      <div class="card">
+        <div class="card-content">
+          <div class="step-indicator">Step 1 of 2</div>
+          <h1 class="card-title">Let's get started</h1>
+          <p class="card-subtitle">We'll personalize your learning experience based on your goals.</p>
+
+          <div class="input-group">
+            <label for="nameInput" class="input-label">What's your name?</label>
+            <input type="text" id="nameInput" class="text-input" placeholder="Enter your name" autocomplete="off"
+              autofocus>
+          </div>
+
+          <button class="btn-primary" id="continueBtn" disabled>
+            Continue
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step 2: Career Selection -->
+    <section class="step step-2" id="step2">
+      <div class="card">
+        <div class="card-content">
+          <div class="step-indicator">Step 2 of 2</div>
+          <h1 class="card-title">Hey <span id="displayName">there</span>! 👋</h1>
+          <p class="card-subtitle">Choose your career roadmap to get started.</p>
+
+          <div class="career-options" id="careerOptions">
+            <button class="career-btn" data-career="web">
+              <div class="career-icon">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2" />
+                  <path d="M8 21H16M12 17V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </div>
+              <div class="career-info">
+                <span class="career-name">Web Development</span>
+                <span class="career-desc">Frontend, Backend & Full Stack</span>
+              </div>
+            </button>
+
+            <button class="career-btn" data-career="mobile">
+              <div class="career-icon">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <rect x="5" y="2" width="14" height="20" rx="2" stroke="currentColor" stroke-width="2" />
+                  <path d="M12 18H12.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </div>
+              <div class="career-info">
+                <span class="career-name">Mobile Development</span>
+                <span class="career-desc">iOS, Android & Cross-platform</span>
+              </div>
+            </button>
+
+            <button class="career-btn" data-career="data">
+              <div class="career-icon">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                  <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                  <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </div>
+              <div class="career-info">
+                <span class="career-name">Data Science / ML</span>
+                <span class="career-desc">Analytics, AI & Machine Learning</span>
+              </div>
+            </button>
+
+            <button class="career-btn" data-career="devops">
+              <div class="career-icon">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M12.22 2H11.78C11.2496 2 10.7409 2.21071 10.3658 2.58579C9.99072 2.96086 9.78 3.46957 9.78 4V4.18C9.77964 4.53073 9.68706 4.87519 9.51154 5.17884C9.33602 5.48248 9.08374 5.73464 8.78 5.91L8.35 6.16C8.04596 6.33554 7.70108 6.42795 7.35 6.42795C6.99893 6.42795 6.65404 6.33554 6.35 6.16L6.2 6.08C5.74107 5.81526 5.19584 5.74344 4.684 5.88C4.17217 6.01656 3.73555 6.35077 3.47 6.81L3.25 7.19C2.98526 7.64893 2.91345 8.19416 3.05 8.706C3.18656 9.21783 3.52077 9.65445 3.98 9.92L4.13 10.02C4.43228 10.1945 4.68362 10.4451 4.85905 10.7468C5.03448 11.0486 5.1279 11.3908 5.13 11.74V12.25C5.1314 12.6024 5.03965 12.949 4.86405 13.2545C4.68844 13.5601 4.43521 13.8138 4.13 13.99L3.98 14.08C3.52077 14.3455 3.18656 14.7822 3.05 15.294C2.91345 15.8058 2.98526 16.3511 3.25 16.81L3.47 17.19C3.73555 17.6492 4.17217 17.9834 4.684 18.12C5.19584 18.2566 5.74107 18.1847 6.2 17.92L6.35 17.84C6.65404 17.6645 6.99893 17.572 7.35 17.572C7.70108 17.572 8.04596 17.6645 8.35 17.84L8.78 18.09C9.08374 18.2654 9.33602 18.5175 9.51154 18.8212C9.68706 19.1248 9.77964 19.4693 9.78 19.82V20C9.78 20.5304 9.99072 21.0391 10.3658 21.4142C10.7409 21.7893 11.2496 22 11.78 22H12.22C12.7504 22 13.2591 21.7893 13.6342 21.4142C14.0093 21.0391 14.22 20.5304 14.22 20V19.82C14.2204 19.4693 14.3129 19.1248 14.4885 18.8212C14.664 18.5175 14.9163 18.2654 15.22 18.09L15.65 17.84C15.954 17.6645 16.2989 17.572 16.65 17.572C17.0011 17.572 17.346 17.6645 17.65 17.84L17.8 17.92C18.2589 18.1847 18.8042 18.2566 19.316 18.12C19.8278 17.9834 20.2645 17.6492 20.53 17.19L20.75 16.8C21.0147 16.3411 21.0866 15.7958 20.95 15.284C20.8134 14.7722 20.4792 14.3355 20.02 14.07L19.87 13.99C19.5648 13.8138 19.3116 13.5601 19.1359 13.2545C18.9603 12.949 18.8686 12.6024 18.87 12.25V11.75C18.8686 11.3976 18.9603 11.051 19.1359 10.7455C19.3116 10.4399 19.5648 10.1862 19.87 10.01L20.02 9.92C20.4792 9.65445 20.8134 9.21783 20.95 8.706C21.0866 8.19416 21.0147 7.64893 20.75 7.19L20.53 6.81C20.2645 6.35077 19.8278 6.01656 19.316 5.88C18.8042 5.74344 18.2589 5.81526 17.8 6.08L17.65 6.16C17.346 6.33554 17.0011 6.42795 16.65 6.42795C16.2989 6.42795 15.954 6.33554 15.65 6.16L15.22 5.91C14.9163 5.73464 14.664 5.48248 14.4885 5.17884C14.3129 4.87519 14.2204 4.53073 14.22 4.18V4C14.22 3.46957 14.0093 2.96086 13.6342 2.58579C13.2591 2.21071 12.7504 2 12.22 2Z"
+                    stroke="currentColor" stroke-width="2" />
+                  <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2" />
+                </svg>
+              </div>
+              <div class="career-info">
+                <span class="career-name">DevOps / Cloud</span>
+                <span class="career-desc">Infrastructure & Cloud Engineering</span>
+              </div>
+            </button>
+          </div>
+
+          <button class="btn-back" id="backBtn">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+            Back
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step 3: Completion (Placeholder) -->
+    <section class="step step-3" id="step3">
+      <div class="card">
+        <div class="card-content completion-content">
+          <div class="success-icon">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path
+                d="M22 11.08V12C21.9988 14.1564 21.3005 16.2547 20.0093 17.9818C18.7182 19.709 16.9033 20.9725 14.8354 21.5839C12.7674 22.1953 10.5573 22.1219 8.53447 21.3746C6.51168 20.6273 4.78465 19.2461 3.61096 17.4371C2.43727 15.628 1.87979 13.4881 2.02168 11.3363C2.16356 9.18455 2.99721 7.13631 4.39828 5.49706C5.79935 3.85781 7.69279 2.71537 9.79619 2.24013C11.8996 1.7649 14.1003 1.98232 16.07 2.85999"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M22 4L12 14.01L9 11.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </div>
+          <h1 class="card-title">You're all set!</h1>
+          <p class="card-subtitle">Your personalized <span id="selectedCareer">learning</span> roadmap is ready.</p>
+          <div class="user-summary">
+            <div class="summary-item">
+              <span class="summary-label">Name</span>
+              <span class="summary-value" id="summaryName">—</span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-label">Career Path</span>
+              <span class="summary-value" id="summaryCareer">—</span>
+            </div>
+          </div>
+          <button class="btn-primary" id="viewRoadmapBtn">
+            View My Roadmap
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
